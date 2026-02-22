@@ -1,1 +1,26 @@
 @import 'tailwindcss';
+
+@import './assets/fonts/Poppins.css';
+
+@theme {
+  --font-primary: 'Poppins', sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-box;
+    @apply font-primary;
+  }
+
+  html,
+  body {
+    @apply scroll-smooth;
+  }
+
+  button,
+  select {
+    @apply cursor-pointer;
+  }
+}
