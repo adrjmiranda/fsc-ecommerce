@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# FSC E-commerce 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and scalable e-commerce project developed during the **Full-Stack Club** training. The goal is to deliver a smooth shopping experience, using the latest technologies from the React ecosystem and robust integration with Firebase.
 
-Currently, two official plugins are available:
+## 🛠️ Technologies and Tools
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Core:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Backend as a Service:** [Firebase](https://firebase.google.com/) (Authentication, Firestore, Storage)
+- **Linting & Formatting:** [ESLint 9](https://eslint.org/) + [Prettier](https://prettier.io/)
+- **Workflow:** [Husky](https://typicode.github.io/husky/) + [Lint-staged](https://github.com/okonet/lint-staged) + [Commitlint](https://commitlint.js.org/)
 
-## React Compiler
+## 📂 Folder Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```text
+src/
+├── @types/          # Global type definitions
+├── assets/          # Images, icons, and fonts
+├── components/      # Reusable components (UI)
+├── contexts/        # React contexts (Auth, Cart, etc.)
+├── hooks/           # Custom hooks
+├── pages/           # Page components (routes)
+├── services/        # Integration with Firebase and external APIs
+└── utils/           # Utility functions and helpers
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ How to run
 
-```js
-// eslint.config.js
-import reactDom from 'eslint-plugin-react-dom';
-import reactX from 'eslint-plugin-react-x';
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/adrjmiranda/fsc-ecommerce.git
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## 📝 Commit Standards
+
+This project uses **Husky** and **Commitlint** to enforce Conventional Commits.
+
+- Header limit: 70 characters.
+- Format: `type: description` (all lowercase, no period at the end).
+
+---
+
+Developed by [Adriano Miranda](https://github.com/adrjmiranda) during the Full-Stack Club journey.
