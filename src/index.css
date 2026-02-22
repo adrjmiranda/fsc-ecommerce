@@ -3,23 +3,50 @@
 @import './assets/fonts/Poppins.css';
 
 @theme {
+  --breakpoint-7xl: 1280px;
+
   --font-primary: 'Poppins', sans-serif;
+
+  --text-base: 15px;
+
+  --color-primary: #5a50e5;
+  --color-secondary: #a6f3ed;
+
+  --color-primary-bg: #ffffff;
+  --color-secondary-bg: #f8f9fa;
+  --color-primary-text: #000000;
+  --color-secondary-text: #616262;
 }
 
 @layer base {
   *,
   *::before,
   *::after {
-    @apply font-primary;
+    @apply font-primary text-base outline-none;
   }
 
   html,
   body {
-    @apply scroll-smooth;
+    @apply text-secondary-text scroll-smooth;
   }
 
   button,
   select {
     @apply cursor-pointer;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply text-primary-text font-semibold;
+  }
+
+  input,
+  textarea {
+    @apply placeholder:font-light;
+  }
+}
+
+@layer components {
+  .wrapper {
+    @apply 7xl:px-0 mx-auto max-w-7xl px-2;
   }
 }
