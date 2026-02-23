@@ -6,7 +6,7 @@ const FormInput = ({ ...attributes }: Props) => {
   return (
     <input
       {...attributes}
-      className={`w-full bg-transparent text-sm outline-none ${attributes.className}`}
+      className={`w-full bg-transparent px-2 text-sm outline-none ${attributes.className}`}
     />
   );
 };

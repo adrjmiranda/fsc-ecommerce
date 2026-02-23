@@ -8,8 +8,10 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantStyle: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-white',
-  secondary: 'bg-secondary text-white',
+  primary:
+    'bg-primary text-white px-6 opacity-90 hover:shadow-xl hover:opacity-100 transition-all hover:scale-105 duration-300 py-2 rounded-sm font-light',
+  secondary:
+    'bg-secondary text-white px-6 opacity-90 hover:opacity-100 transition-all hover:scale-105 duration-300 hover:shadow-xl py-2 rounded-sm font-light',
   transparent: 'bg-transparent',
 };
 
