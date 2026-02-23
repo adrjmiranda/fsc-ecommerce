@@ -4,7 +4,7 @@ const Benefits = () => {
   return (
     <section className="border-b border-gray-200 py-20">
       <div className="wrapper">
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           <div className="flex items-start gap-4">
             <Truck className="text-primary" size={64} />
             <div className="flex flex-col gap-2">
