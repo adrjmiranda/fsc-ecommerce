@@ -71,10 +71,44 @@ const Header = () => {
       </div>
 
       {/* NAVBAR */}
-      <nav>
-        <div className="wrapper">
-          {/* TODO:... */}
-          Navbar
+      <nav className="h-20">
+        <div className="flex h-full items-center">
+          <div className="wrapper">
+            <ul className="flex items-center justify-center gap-8 text-sm font-normal uppercase">
+              <li>
+                <Link
+                  className="hover:text-primary transition-colors duration-300 ease-in"
+                  to="/"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary transition-colors duration-300 ease-in"
+                  to="/categorias"
+                >
+                  Categorias
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary transition-colors duration-300 ease-in"
+                  to="/sobre"
+                >
+                  Sobre
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary transition-colors duration-300 ease-in"
+                  to="/contato"
+                >
+                  Contato
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
