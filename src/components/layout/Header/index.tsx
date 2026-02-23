@@ -30,7 +30,7 @@ const Header = () => {
 
             <div className="flex flex-1/5 grow-0 items-center justify-end gap-4">
               <Button type="button">
-                <Link to="/login">
+                <Link to="/autenticacao/login">
                   <ButtonIcon
                     Icon={User2}
                     fill
@@ -52,7 +52,7 @@ const Header = () => {
                   Icon={ShoppingCart}
                   fill
                   baseColor="default"
-                  hoverColor="primary"
+                  hoverColor="secondary"
                 />
                 <div className="absolute -top-2 -right-2 h-fit w-fit">
                   <Circle

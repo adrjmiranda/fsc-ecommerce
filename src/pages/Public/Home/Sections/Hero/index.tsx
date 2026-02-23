@@ -18,7 +18,7 @@ const Hero = () => {
           <h1 className="text-primary text-5xl font-bold">
             Coleção de Verão 2026
           </h1>
-          <p className="text-2xl font-semibold">
+          <p className="text-primary-text text-2xl font-semibold md:text-3xl">
             Conheça a nova coleção de verão com descontos de até 50%
           </p>
           <Button type="button" variant="primary" className="w-fit">
