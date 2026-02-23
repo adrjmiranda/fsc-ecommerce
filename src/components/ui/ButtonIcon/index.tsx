@@ -9,27 +9,36 @@ type Props = {
   hoverColor: ColorType;
 };
 
-const baseColors: Record<ColorType, string> = {
-  default: 'secondary-text',
-  primary: 'primary',
-  secondary: 'secondary',
+const fillStyle: Record<ColorType, string> = {
+  default: 'fill-secondary-text',
+  primary: 'fill-primary',
+  secondary: 'fill-secondary',
 };
 
-const hoverColors: Record<ColorType, string> = {
-  default: 'secondary-text',
-  primary: 'primary',
-  secondary: 'secondary',
+const fillStyleHover: Record<ColorType, string> = {
+  default: 'group-hover:fill-secondary-text',
+  primary: 'group-hover:fill-primary',
+  secondary: 'group-hover:fill-secondary',
+};
+
+const textStyle: Record<ColorType, string> = {
+  default: 'text-secondary-text',
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+};
+
+const textStyleHover: Record<ColorType, string> = {
+  default: 'group-hover:text-secondary-text',
+  primary: 'group-hover:text-primary',
+  secondary: 'group-hover:text-secondary',
 };
 
 const ButtonIcon = ({ Icon, fill, baseColor, hoverColor }: Props) => {
-  const baseColorSelected = baseColors[baseColor];
-  const hoverColorSelected = hoverColors[hoverColor];
-
   return (
     <Icon
       size={16}
       fill={fill ? 'black' : 'none'}
-      className={`${fill ? `fill-${baseColorSelected} group-hover:fill-${hoverColorSelected}` : 'fill-none'} text-${baseColorSelected} group-hover:text-${hoverColorSelected} transition-all duration-300 group-hover:scale-115`}
+      className={`${fill ? `${fillStyle[baseColor]} ${fillStyleHover[hoverColor]}` : 'fill-none'} ${textStyle[baseColor]} ${textStyleHover[hoverColor]} transition-all duration-300 group-hover:scale-115`}
     />
   );
 };

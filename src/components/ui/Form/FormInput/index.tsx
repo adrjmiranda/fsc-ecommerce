@@ -2,11 +2,11 @@ import type { InputHTMLAttributes } from 'react';
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 
-const FormInput = ({ ...props }: Props) => {
+const FormInput = ({ ...attributes }: Props) => {
   return (
     <input
-      {...props}
-      className={`w-full bg-transparent text-sm outline-none ${props.className || ''}`}
+      {...attributes}
+      className={`w-full bg-transparent text-sm outline-none ${attributes.className}`}
     />
   );
 };

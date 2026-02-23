@@ -1,4 +1,4 @@
-import { Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
+import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import Button from '@/components/ui/Button';
@@ -47,13 +47,23 @@ const Header = () => {
                   hoverColor="primary"
                 />
               </Button>
-              <Button type="button">
+              <Button type="button" className="relative">
                 <ButtonIcon
                   Icon={ShoppingCart}
                   fill
                   baseColor="default"
                   hoverColor="primary"
                 />
+                <div className="absolute -top-2 -right-2 h-fit w-fit">
+                  <Circle
+                    className="text-primary fill-primary absolute inset-0 z-0 -translate-1/2 rounded-full"
+                    fill="black"
+                    size={28}
+                  />
+                  <span className="absolute top-1/2 left-1/2 z-10 -translate-1/2 text-center text-xs font-medium text-white">
+                    25
+                  </span>
+                </div>
               </Button>
             </div>
           </div>
