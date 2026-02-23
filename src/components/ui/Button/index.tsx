@@ -23,7 +23,7 @@ const Button = ({
   return (
     <button
       {...attributes}
-      className={`${variantStyle[variant]} ${attributes.className} group`}
+      className={`${variantStyle[variant]} ${attributes.className} group uppercase`}
     >
       {children}
     </button>
