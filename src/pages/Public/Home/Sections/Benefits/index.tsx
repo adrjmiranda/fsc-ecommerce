@@ -29,9 +29,11 @@ const Benefits = () => {
           {benefits.length > 0 &&
             benefits.map((benefit) => (
               <div key={benefit.title} className="flex items-start gap-4">
-                <benefit.icon className="text-primary" size={64} />
+                <benefit.icon className="text-primary" size={52} />
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-2xl font-semibold">{benefit.title}</h3>
+                  <h3 className="text-lg font-semibold md:text-xl lg:text-2xl">
+                    {benefit.title}
+                  </h3>
                   <p className="text-base">{benefit.description}</p>
                 </div>
               </div>
