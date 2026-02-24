@@ -23,7 +23,7 @@ const Button = ({
   return (
     <button
       {...attributes}
-      className={`${variantStyle[variant]} ${attributes.className} group flex items-center gap-2 uppercase`}
+      className={`${variantStyle[variant]} ${attributes.className} group flex items-center justify-center gap-2 text-center uppercase`}
     >
       {children}
     </button>

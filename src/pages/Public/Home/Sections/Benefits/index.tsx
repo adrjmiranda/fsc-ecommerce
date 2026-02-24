@@ -23,7 +23,7 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="border-b border-gray-200 py-20">
+    <section className="border-detail py-20">
       <div className="wrapper">
         <div className="grid gap-8 md:grid-cols-3">
           {benefits.length > 0 &&

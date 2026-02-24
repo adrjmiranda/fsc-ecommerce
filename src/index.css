@@ -38,6 +38,10 @@
     @apply overflow-x-hidden;
   }
 
+  img {
+    @apply block h-auto max-w-full select-none;
+  }
+
   button,
   select {
     @apply cursor-pointer;
@@ -56,6 +60,19 @@
 @layer components {
   .wrapper {
     @apply 7xl:px-0 mx-auto max-w-7xl px-2;
+  }
+
+  .border-detail {
+    @apply border-b border-gray-200;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

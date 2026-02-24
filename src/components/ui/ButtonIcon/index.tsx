@@ -7,6 +7,7 @@ type Props = {
   fill: boolean;
   baseColor: ColorType;
   hoverColor: ColorType;
+  size?: number;
 };
 
 const fillStyle: Record<ColorType, string> = {
@@ -33,10 +34,16 @@ const textStyleHover: Record<ColorType, string> = {
   secondary: 'group-hover:text-secondary',
 };
 
-const ButtonIcon = ({ Icon, fill, baseColor, hoverColor }: Props) => {
+const ButtonIcon = ({
+  Icon,
+  fill,
+  baseColor,
+  hoverColor,
+  size = 16,
+}: Props) => {
   return (
     <Icon
-      size={16}
+      size={size}
       fill={fill ? 'black' : 'none'}
       className={`${fill ? `${fillStyle[baseColor]} ${fillStyleHover[hoverColor]}` : 'fill-none'} ${textStyle[baseColor]} ${textStyleHover[hoverColor]} transition-all duration-300 group-hover:scale-115`}
     />

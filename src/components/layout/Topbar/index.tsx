@@ -8,7 +8,7 @@ import Logo from '@/components/ui/Logo';
 
 const Topbar = () => {
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-detail">
       <div className="wrapper">
         <div className="grid grid-cols-2 items-center justify-between gap-10 py-10 sm:flex sm:gap-0">
           <form className="order-2 flex w-fit flex-1/5 grow-0 items-center gap-2 sm:order-1">
