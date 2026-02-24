@@ -6,6 +6,7 @@ import AuthLayout from '@/pages/Auth/Layout';
 import Login from '@/pages/Auth/Login';
 import Register from '@/pages/Auth/Register';
 import About from '@/pages/Common/About';
+import Cart from '@/pages/Common/Cart';
 import Categories from '@/pages/Common/Categories';
 import Contact from '@/pages/Common/Contact';
 import Home from '@/pages/Common/Home/index.tsx';
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="categorias" element={<Categories />} />
                 <Route path="sobre" element={<About />} />
                 <Route path="contato" element={<Contact />} />
+                <Route path="carrinho" element={<Cart />} />
               </Route>
               <Route path="autenticacao" element={<AuthLayout />}>
                 <Route path="login" element={<Login />} />
