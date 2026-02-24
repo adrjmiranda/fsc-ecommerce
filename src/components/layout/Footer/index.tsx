@@ -10,11 +10,11 @@ const Footer = () => {
       <div className="border-t border-gray-200">
         <div className="wrapper">
           <div className="py-20">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid gap-16 lg:grid-cols-2 lg:gap-6">
               <div className="flex flex-col gap-10">
                 <h4 className="text-base font-medium">Navegação</h4>
 
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid gap-12 sm:grid-cols-3 sm:gap-6">
                   <ul className="text-primary-text flex flex-col gap-4 font-extralight">
                     <li>
                       <a
@@ -106,7 +106,7 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid gap-12 sm:grid-cols-2 sm:gap-6">
                 <div className="flex flex-col gap-10">
                   <h4 className="text-base font-medium">Promoção</h4>
 

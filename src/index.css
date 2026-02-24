@@ -34,6 +34,10 @@
     @apply text-secondary-text scroll-smooth;
   }
 
+  body {
+    @apply overflow-x-hidden;
+  }
+
   button,
   select {
     @apply cursor-pointer;
