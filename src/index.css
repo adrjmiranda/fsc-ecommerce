@@ -54,3 +54,15 @@
     @apply 7xl:px-0 mx-auto max-w-7xl px-2;
   }
 }
+
+.swiper-pagination-bullet {
+  @apply h-2.5 w-2.5 rounded-full bg-gray-400 opacity-50 transition-all duration-300;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-primary w-6 rounded-md opacity-100;
+}
+
+.swiper-pagination {
+  @apply relative bottom-0 mt-6;
+}

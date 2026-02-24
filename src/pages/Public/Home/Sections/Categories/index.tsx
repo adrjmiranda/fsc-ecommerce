@@ -1,5 +1,10 @@
+import { ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import Button from '@/components/ui/Button';
+import ButtonIcon from '@/components/ui/ButtonIcon';
 
 const categories = [
   {
@@ -32,11 +37,20 @@ const Categories = () => {
   return (
     <section className="py-20">
       <div className="wrapper">
+        <h2 className="mb-12 text-center text-3xl font-semibold">
+          Todas as Coleções
+        </h2>
+      </div>
+
+      <div className="wrapper">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={32}
           slidesPerView={1}
-          navigation
+          navigation={{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }}
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           breakpoints={{
@@ -47,13 +61,14 @@ const Categories = () => {
           {categories.length > 0 &&
             categories.map((category) => (
               <SwiperSlide key={category.name}>
-                <div className="relative z-0 h-136 overflow-hidden rounded-sm">
+                <div className="group relative z-0 h-136 overflow-hidden rounded-sm">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="absolute inset-0 z-10 h-full w-full object-cover object-center"
+                    className="absolute inset-0 z-10 h-full w-full object-cover object-center transition-all duration-300 group-hover:scale-105"
                   />
-                  <div className="relative z-20 flex h-full flex-col justify-end gap-1 bg-linear-to-t from-black/75 via-black/50 p-4">
+
+                  <div className="relative z-20 flex h-full flex-col justify-end gap-1 bg-linear-to-t from-black/75 via-black/50 p-4 group-hover:from-black/50">
                     <p className="text-sm font-light text-white uppercase">
                       Coleção
                     </p>
@@ -61,9 +76,50 @@ const Categories = () => {
                       {category.name}
                     </h3>
                   </div>
+
+                  <Link
+                    to={`/categorias/${category.name}`}
+                    className="absolute inset-0 z-30 hidden h-full w-full items-center justify-center transition-all duration-300 ease-in-out group-hover:flex"
+                    title={category.name}
+                    children={
+                      <>
+                        <Button variant="secondary">
+                          <ButtonIcon
+                            Icon={ShoppingBag}
+                            fill={false}
+                            baseColor="default"
+                            hoverColor="primary"
+                          />
+                          <span>Ver coleção</span>
+                        </Button>
+                      </>
+                    }
+                  />
                 </div>
               </SwiperSlide>
             ))}
+
+          <div className="swiper-button-prev">
+            <Button className="rounded-full bg-white/80 p-2 shadow-md">
+              <ButtonIcon
+                Icon={ChevronLeft}
+                fill={false}
+                baseColor="default"
+                hoverColor="primary"
+              />
+            </Button>
+          </div>
+
+          <div className="swiper-button-next">
+            <Button className="rounded-full bg-white/80 p-2 shadow-md">
+              <ButtonIcon
+                Icon={ChevronRight}
+                fill={false}
+                baseColor="default"
+                hoverColor="primary"
+              />
+            </Button>
+          </div>
         </Swiper>
       </div>
     </section>

@@ -11,7 +11,7 @@ const variantStyle: Record<ButtonVariant, string> = {
   primary:
     'bg-primary text-white px-6 opacity-90 hover:shadow-xl hover:opacity-100 transition-all hover:scale-105 duration-300 py-2 rounded-sm font-light',
   secondary:
-    'bg-secondary text-white px-6 opacity-90 hover:opacity-100 transition-all hover:scale-105 duration-300 hover:shadow-xl py-2 rounded-sm font-light',
+    'bg-secondary text-primary-text px-6 opacity-90 hover:opacity-100 transition-all hover:scale-105 duration-300 hover:shadow-xl py-2 rounded-sm font-light',
   transparent: 'bg-transparent',
 };
 
@@ -23,7 +23,7 @@ const Button = ({
   return (
     <button
       {...attributes}
-      className={`${variantStyle[variant]} ${attributes.className} group uppercase`}
+      className={`${variantStyle[variant]} ${attributes.className} group flex items-center gap-2 uppercase`}
     >
       {children}
     </button>
