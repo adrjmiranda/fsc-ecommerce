@@ -14,7 +14,7 @@ const Hero = () => {
       </div>
 
       <div className="wrapper relative z-10 h-full">
-        <div className="ml-auto flex h-full flex-col justify-end gap-4 py-20 sm:w-1/2 sm:justify-center sm:py-0">
+        <div className="mr-auto flex h-full flex-col justify-end gap-4 py-20 sm:mr-0 sm:ml-auto sm:w-1/2 sm:justify-center sm:py-0">
           <h1 className="text-primary text-5xl font-bold">
             Coleção de Verão 2026
           </h1>
