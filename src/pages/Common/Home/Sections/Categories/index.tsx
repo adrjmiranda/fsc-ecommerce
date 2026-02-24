@@ -5,42 +5,39 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Button from '@/components/ui/Button';
 import ButtonIcon from '@/components/ui/ButtonIcon';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 const categories = [
   {
     name: 'Feminina',
-    image: '/imagens/categorias/mulheres.webp',
+    image: '/imagens/categorias/v/feminina.webp',
   },
   {
     name: 'Masculina',
-    image: '/imagens/categorias/homens.webp',
+    image: '/imagens/categorias/v/masculina.webp',
   },
   {
     name: 'Infantil',
-    image: '/imagens/categorias/criancas.webp',
+    image: '/imagens/categorias/v/infantil.webp',
   },
   {
     name: 'Cintos',
-    image: '/imagens/categorias/cintos.webp',
+    image: '/imagens/categorias/v/cintos.webp',
   },
   {
     name: 'Lingeries',
-    image: '/imagens/categorias/lingeries.webp',
+    image: '/imagens/categorias/v/lingeries.webp',
   },
   {
     name: 'Chapéus',
-    image: '/imagens/categorias/chapeus.webp',
+    image: '/imagens/categorias/v/chapeus.webp',
   },
 ];
 
 const Categories = () => {
   return (
     <section className="py-20">
-      <div className="wrapper">
-        <h2 className="mb-12 text-center text-3xl font-semibold">
-          Todas as Coleções
-        </h2>
-      </div>
+      <SectionTitle title="Todas as Coleções" />
 
       <div className="wrapper">
         <Swiper
