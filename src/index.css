@@ -2,6 +2,10 @@
 
 @import './assets/fonts/Poppins.css';
 
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
 @theme {
   --breakpoint-7xl: 1280px;
 
