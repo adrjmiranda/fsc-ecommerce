@@ -1,3 +1,5 @@
+import { openCart } from '@/store/cart/slice';
+import { useAppDispatch } from '@/store/hooks';
 import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -7,6 +9,8 @@ import FormInput from '@/components/ui/Form/FormInput';
 import Logo from '@/components/ui/Logo';
 
 const Topbar = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="border-detail">
       <div className="wrapper">
@@ -47,7 +51,11 @@ const Topbar = () => {
                 hoverColor="primary"
               />
             </Button>
-            <Button type="button" className="relative">
+            <Button
+              type="button"
+              className="relative"
+              onClick={() => dispatch(openCart())}
+            >
               <ButtonIcon
                 Icon={ShoppingCart}
                 fill
