@@ -9,12 +9,12 @@ const Hero = () => {
         <img
           src={HeroImage}
           alt="FSC E-commerce"
-          className="7xl:w-auto 7xl:left-44 relative h-full w-full object-cover object-right"
+          className="relative h-full w-full object-cover object-left sm:-left-20"
         />
       </div>
 
       <div className="wrapper relative z-10 h-full">
-        <div className="ml-auto flex h-full flex-col justify-center gap-4 sm:w-1/2">
+        <div className="ml-auto flex h-full flex-col justify-end gap-4 py-20 sm:w-1/2 sm:justify-center sm:py-0">
           <h1 className="text-primary text-5xl font-bold">
             Coleção de Verão 2026
           </h1>
