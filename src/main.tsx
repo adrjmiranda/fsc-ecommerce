@@ -3,8 +3,8 @@ import { StrictMode } from 'react';
 import App from '@/App.tsx';
 import '@/index.css';
 import AuthLayout from '@/pages/Auth/Layout';
-import Login from '@/pages/Auth/Login';
-import Register from '@/pages/Auth/Register';
+import SignIn from '@/pages/Auth/SignIn';
+import SignUp from '@/pages/Auth/SignUp';
 import About from '@/pages/Common/About';
 import Cart from '@/pages/Common/Cart';
 import Categories from '@/pages/Common/Categories';
@@ -33,8 +33,8 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="carrinho" element={<Cart />} />
               </Route>
               <Route path="autenticacao" element={<AuthLayout />}>
-                <Route path="login" element={<Login />} />
-                <Route path="cadastro" element={<Register />} />
+                <Route path="login" element={<SignIn />} />
+                <Route path="cadastro" element={<SignUp />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />
