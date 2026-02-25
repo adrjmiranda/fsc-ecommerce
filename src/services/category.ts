@@ -23,6 +23,7 @@ const CategoryService = {
     const querySnapshot = await getDocs(
       collection(db, 'categories').withConverter(categoryConverter),
     );
+
     return querySnapshot.docs.map((doc) => doc.data());
   },
 };

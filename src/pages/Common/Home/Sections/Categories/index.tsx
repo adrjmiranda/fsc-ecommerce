@@ -36,8 +36,7 @@ const Categories = () => {
             768: { slidesPerView: 3, spaceBetween: 24 },
           }}
         >
-          {categories &&
-            categories.length > 0 &&
+          {categories.length > 0 &&
             categories.map((category) => (
               <SwiperSlide key={category.id}>
                 <div className="group relative z-0 h-136 overflow-hidden rounded-sm">
