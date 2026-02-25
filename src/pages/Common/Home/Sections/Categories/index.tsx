@@ -7,35 +7,16 @@ import Button from '@/components/ui/Button';
 import ButtonIcon from '@/components/ui/ButtonIcon';
 import SectionTitle from '@/components/ui/SectionTitle';
 
-const categories = [
-  {
-    name: 'Feminina',
-    image: '/imagens/categorias/v/feminina.webp',
-  },
-  {
-    name: 'Masculina',
-    image: '/imagens/categorias/v/masculina.webp',
-  },
-  {
-    name: 'Infantil',
-    image: '/imagens/categorias/v/infantil.webp',
-  },
-  {
-    name: 'Cintos',
-    image: '/imagens/categorias/v/cintos.webp',
-  },
-  {
-    name: 'Lingeries',
-    image: '/imagens/categorias/v/lingeries.webp',
-  },
-  {
-    name: 'Chapéus',
-    image: '/imagens/categorias/v/chapeus.webp',
-  },
-];
+import { useCategories } from '@/hooks/categories/useCategories';
+
+import CategoriesSkeleton from './CategoriesSkeleton';
 
 const Categories = () => {
-  return (
+  const { data: categories, isPending } = useCategories();
+
+  return isPending ? (
+    <CategoriesSkeleton />
+  ) : (
     <section className="py-20">
       <SectionTitle title="Todas as Coleções" />
 
@@ -55,12 +36,13 @@ const Categories = () => {
             768: { slidesPerView: 3, spaceBetween: 24 },
           }}
         >
-          {categories.length > 0 &&
+          {categories &&
+            categories.length > 0 &&
             categories.map((category) => (
-              <SwiperSlide key={category.name}>
+              <SwiperSlide key={category.id}>
                 <div className="group relative z-0 h-136 overflow-hidden rounded-sm">
                   <img
-                    src={category.image}
+                    src={category.imageUrl}
                     alt={category.name}
                     className="absolute inset-0 z-10 h-full w-full object-cover object-center transition-all duration-300 group-hover:scale-105"
                   />

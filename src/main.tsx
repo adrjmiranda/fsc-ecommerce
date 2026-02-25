@@ -13,33 +13,38 @@ import Home from '@/pages/Common/Home/index.tsx';
 import CommonLayout from '@/pages/Common/Layout.tsx';
 import NotFound from '@/pages/Error/NotFound';
 import { persistor, store } from '@/store';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route path="" element={<CommonLayout />}>
-                <Route index element={<Home />} />
-                <Route path="categorias" element={<Categories />} />
-                <Route path="sobre" element={<About />} />
-                <Route path="contato" element={<Contact />} />
-                <Route path="carrinho" element={<Cart />} />
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route path="" element={<CommonLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="categorias" element={<Categories />} />
+                  <Route path="sobre" element={<About />} />
+                  <Route path="contato" element={<Contact />} />
+                  <Route path="carrinho" element={<Cart />} />
+                </Route>
+                <Route path="autenticacao" element={<AuthLayout />}>
+                  <Route path="login" element={<SignIn />} />
+                  <Route path="cadastro" element={<SignUp />} />
+                </Route>
               </Route>
-              <Route path="autenticacao" element={<AuthLayout />}>
-                <Route path="login" element={<SignIn />} />
-                <Route path="cadastro" element={<SignUp />} />
-              </Route>
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   </StrictMode>,
