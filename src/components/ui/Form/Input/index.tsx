@@ -2,7 +2,7 @@ import type { InputHTMLAttributes } from 'react';
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 
-const FormInput = ({ ...attributes }: Props) => {
+const Input = ({ ...attributes }: Props) => {
   return (
     <input
       {...attributes}
@@ -11,4 +11,4 @@ const FormInput = ({ ...attributes }: Props) => {
   );
 };
 
-export default FormInput;
+export default Input;

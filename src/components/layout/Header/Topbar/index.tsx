@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '@/components/ui/Button';
 import ButtonIcon from '@/components/ui/ButtonIcon';
-import FormInput from '@/components/ui/Form/FormInput';
+import Input from '@/components/ui/Form/Input';
 import Logo from '@/components/ui/Logo';
 
 const Topbar = () => {
@@ -19,7 +19,7 @@ const Topbar = () => {
             <label htmlFor="search">
               <SearchIcon size={16} />
             </label>
-            <FormInput
+            <Input
               type="search"
               name="search"
               id="search"

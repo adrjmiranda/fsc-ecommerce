@@ -2,7 +2,7 @@ import FooterPromotionImage from '@/assets/images/footer-promotion.webp';
 import { MailIcon, PhoneCallIcon, PinIcon } from 'lucide-react';
 
 import Button from '@/components/ui/Button';
-import FormInput from '@/components/ui/Form/FormInput';
+import FormInput from '@/components/ui/Form/Input';
 
 const Footer = () => {
   return (
