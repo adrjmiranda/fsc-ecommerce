@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Button from '@/components/ui/Button';
 import ButtonIcon from '@/components/ui/ButtonIcon';
+import EmptyCategoriesFallback from '@/components/ui/EmptyCategoriesFallback';
 import SectionTitle from '@/components/ui/SectionTitle';
 
 import { useCategories } from '@/hooks/categories/useCategories';
@@ -100,11 +101,7 @@ const Categories = () => {
             </div>
           </Swiper>
         ) : (
-          <div className="flex flex-col items-center justify-center py-10 text-center">
-            <p className="text-gray-500">
-              Ops! Nenhuma coleção disponível no momento.
-            </p>
-          </div>
+          <EmptyCategoriesFallback />
         )}
       </div>
     </section>
