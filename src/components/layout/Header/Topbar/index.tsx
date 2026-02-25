@@ -1,5 +1,5 @@
 import { openCart } from '@/store/cart/slice';
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,8 @@ import Logo from '@/components/ui/Logo';
 
 const Topbar = () => {
   const dispatch = useAppDispatch();
+
+  const quantity = useAppSelector((state) => state.cart.quantity);
 
   return (
     <div className="border-detail">
@@ -32,7 +34,9 @@ const Topbar = () => {
             <Logo />
           </div>
 
-          <div className="7xl:pr-0 order-3 flex flex-1/5 grow-0 items-center justify-end gap-4 pr-6 sm:order-3">
+          <div
+            className={`${quantity > 0 ? 'pr-6' : ''} 7xl:pr-0 order-3 flex flex-1/5 grow-0 items-center justify-end gap-4 sm:order-3`}
+          >
             <Button type="button">
               <Link to="/autenticacao/login">
                 <ButtonIcon
@@ -62,14 +66,16 @@ const Topbar = () => {
                 baseColor="default"
                 hoverColor="secondary"
               />
-              <div className="absolute -top-2 -right-2 h-fit w-fit">
+              <div
+                className={`${quantity > 0 ? 'block' : 'hidden'} absolute -top-2 -right-2 h-fit w-fit`}
+              >
                 <Circle
                   className="text-primary fill-primary absolute inset-0 z-0 -translate-1/2 rounded-full"
                   fill="black"
                   size={28}
                 />
                 <span className="absolute top-1/2 left-1/2 z-10 -translate-1/2 text-center text-xs font-medium text-white">
-                  25
+                  {quantity}
                 </span>
               </div>
             </Button>

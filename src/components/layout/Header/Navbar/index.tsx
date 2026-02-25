@@ -40,7 +40,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`${isMenuOpen ? 'top-60 opacity-100' : '-top-60 opacity-0'} absolute z-50 w-[calc(100vw-(--spacing(8)))] flex-col items-center justify-center gap-8 rounded-sm bg-white p-4 text-sm font-normal uppercase transition-all duration-300 ease-in sm:static sm:top-0 sm:flex sm:w-full sm:flex-row sm:rounded-none sm:bg-transparent sm:p-0 sm:opacity-100`}
+            className={`${isMenuOpen ? 'top-60 opacity-100' : '-top-60 opacity-0'} absolute z-50 w-[calc(100vw-(--spacing(4)))] flex-col items-center justify-center gap-8 rounded-sm bg-white p-4 text-sm font-normal uppercase transition-all duration-300 ease-in sm:static sm:top-0 sm:flex sm:w-full sm:flex-row sm:rounded-none sm:bg-transparent sm:p-0 sm:opacity-100`}
           >
             {items.map((item) => (
               <Item key={item.to} to={item.to} handleMenuOpen={setIsMenuOpen}>
