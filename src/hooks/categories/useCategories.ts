@@ -7,7 +7,6 @@ const useCategories = () => {
   return useQuery({
     queryKey: [CATEGORIES],
     queryFn: CategoryService.fetchAll,
-    initialData: [],
     staleTime: 1000 * 60 * 60,
     gcTime: 1000 * 60 * 60,
   });

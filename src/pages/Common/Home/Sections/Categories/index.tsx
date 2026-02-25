@@ -12,32 +12,32 @@ import { useCategories } from '@/hooks/categories/useCategories';
 import CategoriesSkeleton from './CategoriesSkeleton';
 
 const Categories = () => {
-  const { data: categories, isPending } = useCategories();
+  const { data: categories = [], isPending } = useCategories();
 
-  return isPending ? (
-    <CategoriesSkeleton />
-  ) : (
+  return (
     <section className="py-20">
       <SectionTitle title="Todas as Coleções" />
 
       <div className="wrapper">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={16}
-          slidesPerView={1}
-          navigation={{
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
-          }}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          breakpoints={{
-            640: { slidesPerView: 2, spaceBetween: 32 },
-            768: { slidesPerView: 3, spaceBetween: 24 },
-          }}
-        >
-          {categories.length > 0 &&
-            categories.map((category) => (
+        {isPending ? (
+          <CategoriesSkeleton />
+        ) : categories.length > 0 ? (
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={16}
+            slidesPerView={1}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            breakpoints={{
+              640: { slidesPerView: 2, spaceBetween: 32 },
+              768: { slidesPerView: 3, spaceBetween: 24 },
+            }}
+          >
+            {categories.map((category) => (
               <SwiperSlide key={category.id}>
                 <div className="group relative z-0 h-136 overflow-hidden rounded-sm">
                   <img
@@ -77,28 +77,35 @@ const Categories = () => {
               </SwiperSlide>
             ))}
 
-          <div className="swiper-button-prev">
-            <Button className="rounded-full bg-white/80 p-2 shadow-md">
-              <ButtonIcon
-                Icon={ChevronLeft}
-                fill={false}
-                baseColor="default"
-                hoverColor="primary"
-              />
-            </Button>
-          </div>
+            <div className="swiper-button-prev">
+              <Button className="rounded-full bg-white/80 p-2 shadow-md">
+                <ButtonIcon
+                  Icon={ChevronLeft}
+                  fill={false}
+                  baseColor="default"
+                  hoverColor="primary"
+                />
+              </Button>
+            </div>
 
-          <div className="swiper-button-next">
-            <Button className="rounded-full bg-white/80 p-2 shadow-md">
-              <ButtonIcon
-                Icon={ChevronRight}
-                fill={false}
-                baseColor="default"
-                hoverColor="primary"
-              />
-            </Button>
+            <div className="swiper-button-next">
+              <Button className="rounded-full bg-white/80 p-2 shadow-md">
+                <ButtonIcon
+                  Icon={ChevronRight}
+                  fill={false}
+                  baseColor="default"
+                  hoverColor="primary"
+                />
+              </Button>
+            </div>
+          </Swiper>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-10 text-center">
+            <p className="text-gray-500">
+              Ops! Nenhuma coleção disponível no momento.
+            </p>
           </div>
-        </Swiper>
+        )}
       </div>
     </section>
   );
