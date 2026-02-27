@@ -1,3 +1,6 @@
+import { selectCurrentUser } from '@/store/auth/selectors';
+import { logout } from '@/store/auth/slice';
+import { selectCartQuantity } from '@/store/cart/selectors';
 import { openCart } from '@/store/cart/slice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
@@ -11,7 +14,8 @@ import Logo from '@/components/ui/Logo';
 const Topbar = () => {
   const dispatch = useAppDispatch();
 
-  const quantity = useAppSelector((state) => state.cart.quantity);
+  const quantity = useAppSelector(selectCartQuantity);
+  const currentUser = useAppSelector(selectCurrentUser);
 
   return (
     <div className="border-detail">
@@ -37,16 +41,23 @@ const Topbar = () => {
           <div
             className={`${quantity > 0 ? 'pr-6' : ''} 7xl:pr-0 order-3 flex flex-1/5 grow-0 items-center justify-end gap-4 sm:order-3`}
           >
-            <Button type="button">
+            {currentUser ? (
+              <Button type="button" onClick={() => dispatch(logout())}>
+                Sair
+              </Button>
+            ) : (
               <Link to="/autenticacao/login">
-                <ButtonIcon
-                  Icon={User2}
-                  fill
-                  baseColor="default"
-                  hoverColor="primary"
-                />
+                <Button type="button">
+                  <ButtonIcon
+                    Icon={User2}
+                    fill
+                    baseColor="default"
+                    hoverColor="primary"
+                  />
+                </Button>
               </Link>
-            </Button>
+            )}
+
             <Button type="button">
               <ButtonIcon
                 Icon={Heart}
