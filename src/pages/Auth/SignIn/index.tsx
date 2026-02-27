@@ -1,4 +1,4 @@
-import { LogIn, Store } from 'lucide-react';
+import { Loader2, LogIn, Store } from 'lucide-react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import Field from '@/components/ui/Form/Field';
 import { useSignIn } from '@/hooks/auth/useSignIn';
 
 const SignIn = () => {
-  const { form, onSubmit } = useSignIn();
+  const { form, onSubmit, isPending } = useSignIn();
 
   const navigate = useNavigate();
 
@@ -64,9 +64,18 @@ const SignIn = () => {
                 errorMessage={form.formState.errors.password?.message}
               />
 
-              <Button type="submit" variant="primary">
-                <LogIn size={16} />
-                Entrar
+              <Button disabled={isPending} type="submit" variant="primary">
+                {isPending ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Entrando...
+                  </>
+                ) : (
+                  <>
+                    <LogIn size={16} />
+                    Entrar
+                  </>
+                )}
               </Button>
 
               <p className="text-center text-sm">
