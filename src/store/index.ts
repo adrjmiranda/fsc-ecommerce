@@ -1,3 +1,5 @@
+import authReducer from '@/store/auth/slice';
+import cartReducer from '@/store/cart/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -11,16 +13,15 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import cartReducer from './cart/slice';
-
 const rootReducer = combineReducers({
   cart: cartReducer,
+  auth: authReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'auth'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

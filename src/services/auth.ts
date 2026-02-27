@@ -1,0 +1,3 @@
+const AuthService = {};
+
+export { AuthService };
