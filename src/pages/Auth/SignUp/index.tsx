@@ -1,4 +1,4 @@
-import { Store, UserPlus } from 'lucide-react';
+import { Loader2, Store, UserPlus } from 'lucide-react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import Field from '@/components/ui/Form/Field';
 import { useSignUp } from '@/hooks/auth/useSignUp';
 
 const SignUp = () => {
-  const { form, onSubmit } = useSignUp();
+  const { form, onSubmit, isPending } = useSignUp();
 
   const navigate = useNavigate();
 
@@ -96,9 +96,18 @@ const SignUp = () => {
                 errorMessage={form.formState.errors.confirmPassword?.message}
               />
 
-              <Button type="submit" variant="primary">
-                <UserPlus size={16} />
-                Registrar
+              <Button disabled={isPending} type="submit" variant="primary">
+                {isPending ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Registrando...
+                  </>
+                ) : (
+                  <>
+                    <UserPlus size={16} />
+                    Registrar
+                  </>
+                )}
               </Button>
 
               <p className="text-center text-sm">
