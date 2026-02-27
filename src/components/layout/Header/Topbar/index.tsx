@@ -1,8 +1,7 @@
 import { selectCurrentUser } from '@/store/auth/selectors';
-import { logout } from '@/store/auth/slice';
 import { selectCartQuantity } from '@/store/cart/selectors';
 import { openCart } from '@/store/cart/slice';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppSelector } from '@/store/hooks';
 import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -11,8 +10,10 @@ import ButtonIcon from '@/components/ui/ButtonIcon';
 import Input from '@/components/ui/Form/Input';
 import Logo from '@/components/ui/Logo';
 
+import { useLogout } from '@/hooks/auth/useLogout';
+
 const Topbar = () => {
-  const dispatch = useAppDispatch();
+  const { onSubmit } = useLogout();
 
   const quantity = useAppSelector(selectCartQuantity);
   const currentUser = useAppSelector(selectCurrentUser);
@@ -42,7 +43,7 @@ const Topbar = () => {
             className={`${quantity > 0 ? 'pr-6' : ''} 7xl:pr-0 order-3 flex flex-1/5 grow-0 items-center justify-end gap-4 sm:order-3`}
           >
             {currentUser ? (
-              <Button type="button" onClick={() => dispatch(logout())}>
+              <Button type="button" onClick={onSubmit}>
                 Sair
               </Button>
             ) : (
