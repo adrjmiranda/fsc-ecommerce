@@ -3,6 +3,7 @@ import {
   type UserCredential,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -31,6 +32,10 @@ const AuthService = {
 
   async signIn({ email, password }: SignInData): Promise<void> {
     await signInWithEmailAndPassword(auth, email, password);
+  },
+
+  async signOut(): Promise<void> {
+    await signOut(auth);
   },
 };
 
