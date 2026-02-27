@@ -42,7 +42,7 @@ const Categories = () => {
               <SwiperSlide key={category.id}>
                 <div className="group relative z-0 h-136 overflow-hidden rounded-sm">
                   <img
-                    src={category.imageUrl}
+                    src={category.imageUrl.replace(/\/h\//g, '/v/')}
                     alt={category.name}
                     className="absolute inset-0 z-10 h-full w-full object-cover object-center transition-all duration-300 group-hover:scale-105"
                   />
