@@ -5,10 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import Field from '@/components/ui/Form/Field';
 
+import { useGoogleSignIn } from '@/hooks/auth/useGoogleSignIn';
 import { useSignIn } from '@/hooks/auth/useSignIn';
 
 const SignIn = () => {
   const { form, onSubmit, isPending } = useSignIn();
+  const { onSubmit: handleGoogleSignIn, isPending: isGoogleSignInPending } =
+    useGoogleSignIn();
 
   const navigate = useNavigate();
 
@@ -25,9 +28,23 @@ const SignIn = () => {
                 Entre com a sua conta
               </h1>
 
-              <Button type="button" variant="primary">
-                <FaGoogle />
-                Entrar com o Google
+              <Button
+                onClick={handleGoogleSignIn}
+                disabled={isPending || isGoogleSignInPending}
+                type="button"
+                variant="primary"
+              >
+                {isGoogleSignInPending ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Entrando...
+                  </>
+                ) : (
+                  <>
+                    <FaGoogle />
+                    Entrar com o Google
+                  </>
+                )}
               </Button>
 
               <p className="text-center text-sm">Ou entre com o seu e-mail</p>
@@ -64,8 +81,12 @@ const SignIn = () => {
                 errorMessage={form.formState.errors.password?.message}
               />
 
-              <Button disabled={isPending} type="submit" variant="primary">
-                {isPending ? (
+              <Button
+                disabled={isPending || isGoogleSignInPending}
+                type="submit"
+                variant="primary"
+              >
+                {isPending || isGoogleSignInPending ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
                     Entrando...
