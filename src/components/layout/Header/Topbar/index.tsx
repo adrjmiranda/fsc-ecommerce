@@ -1,7 +1,7 @@
 import { selectCurrentUser } from '@/store/auth/selectors';
 import { selectCartQuantity } from '@/store/cart/selectors';
 import { openCart } from '@/store/cart/slice';
-import { useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import Logo from '@/components/ui/Logo';
 import { useLogout } from '@/hooks/auth/useLogout';
 
 const Topbar = () => {
+  const dispatch = useAppDispatch();
   const { onSubmit } = useLogout();
 
   const quantity = useAppSelector(selectCartQuantity);
