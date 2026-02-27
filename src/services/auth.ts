@@ -25,11 +25,17 @@ const AuthService = {
 
     await updateProfile(user, { displayName: name });
 
-    await setDoc(doc(db, 'users', user.uid), {
-      name,
-      email,
-      createdAt: new Date().toISOString(),
-    });
+    await setDoc(
+      doc(db, 'users', user.uid),
+      {
+        name,
+        email,
+        createdAt: new Date().toISOString(),
+      },
+      {
+        merge: true,
+      },
+    );
   },
 
   async signIn({ email, password }: SignInData): Promise<User> {
@@ -44,7 +50,21 @@ const AuthService = {
   async signInWithGoogle(): Promise<User> {
     const googleProvider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, googleProvider);
-    return result.user;
+    const user = result.user;
+
+    await setDoc(
+      doc(db, 'users', user.uid),
+      {
+        name: user.displayName,
+        email: user.email,
+        createdAt: new Date().toISOString(),
+      },
+      {
+        merge: true,
+      },
+    );
+
+    return user;
   },
 };
 

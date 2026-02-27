@@ -5,10 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '@/components/ui/Button';
 import Field from '@/components/ui/Form/Field';
 
+import { useGoogleSignIn } from '@/hooks/auth/useGoogleSignIn';
 import { useSignUp } from '@/hooks/auth/useSignUp';
 
 const SignUp = () => {
   const { form, onSubmit, isPending } = useSignUp();
+  const { onSubmit: handleGoogleSignUp, isPending: isGoogleSignInPending } =
+    useGoogleSignIn();
 
   const navigate = useNavigate();
 
@@ -25,9 +28,23 @@ const SignUp = () => {
                 Crie a sua conta
               </h1>
 
-              <Button type="button" variant="primary">
-                <FaGoogle />
-                Criar conta com o Google
+              <Button
+                onClick={handleGoogleSignUp}
+                disabled={isPending || isGoogleSignInPending}
+                type="button"
+                variant="primary"
+              >
+                {isGoogleSignInPending ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Criando...
+                  </>
+                ) : (
+                  <>
+                    <FaGoogle />
+                    Criar conta com o Google
+                  </>
+                )}
               </Button>
 
               <p className="text-center text-sm">
@@ -96,8 +113,12 @@ const SignUp = () => {
                 errorMessage={form.formState.errors.confirmPassword?.message}
               />
 
-              <Button disabled={isPending} type="submit" variant="primary">
-                {isPending ? (
+              <Button
+                disabled={isPending || isGoogleSignInPending}
+                type="submit"
+                variant="primary"
+              >
+                {isPending || isGoogleSignInPending ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
                     Registrando...
