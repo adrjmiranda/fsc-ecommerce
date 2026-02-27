@@ -1,7 +1,6 @@
+import type { Category } from '@/@types/categoy';
 import { db } from '@/lib/firebase';
 import { QueryDocumentSnapshot, collection, getDocs } from 'firebase/firestore';
-
-import type { Category } from '@/types/categoy';
 
 const categoryConverter = {
   toFirestore: (category: Category) => category,
