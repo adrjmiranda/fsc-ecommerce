@@ -22,6 +22,7 @@ export const useLogout = () => {
     },
     onError: () => {
       dispatch(logout());
+      toast.info('Sessão encerrada.');
       navigate('/autenticacao/login');
     },
   });
