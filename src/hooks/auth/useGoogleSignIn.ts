@@ -2,33 +2,20 @@ import { MUTATION_KEYS } from '@/constants/mutationKeys';
 import { login } from '@/store/auth/slice';
 import { useAppDispatch } from '@/store/hooks';
 import { getFirebaseAuthErrorMessage } from '@/utils/getFirebaseAuthErrorMessage';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import type { User } from 'firebase/auth';
-import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import * as z from 'zod';
 
 import { AuthService } from '@/services/auth';
 
-import { signInSchema } from '@/schemas/auth';
-
-const useSignIn = () => {
+const useGoogleSignIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const form = useForm<z.infer<typeof signInSchema>>({
-    resolver: zodResolver(signInSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
-
   const { mutateAsync, isPending } = useMutation({
-    mutationKey: [MUTATION_KEYS.SIGN_IN],
-    mutationFn: AuthService.signIn,
+    mutationKey: [MUTATION_KEYS.GOOGLE_SIGN_IN],
+    mutationFn: AuthService.signInWithGoogle,
     onSuccess: (user: User) => {
       if (user) {
         dispatch(
@@ -40,7 +27,6 @@ const useSignIn = () => {
         );
       }
 
-      form.reset();
       toast.success('Login realizado com sucesso!');
       navigate('/');
     },
@@ -50,19 +36,14 @@ const useSignIn = () => {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof signInSchema>) => {
-    const signInData = {
-      email: data.email,
-      password: data.password,
-    };
-    await mutateAsync(signInData);
+  const onSubmit = async () => {
+    await mutateAsync();
   };
 
   return {
-    form,
     onSubmit,
     isPending,
   };
 };
 
-export { useSignIn };
+export { useGoogleSignIn };
