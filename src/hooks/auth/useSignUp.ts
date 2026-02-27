@@ -2,10 +2,14 @@ import { MUTATION_KEYS } from '@/constants/mutationKeys';
 import { auth } from '@/lib/firebase';
 import { login } from '@/store/auth/slice';
 import { useAppDispatch } from '@/store/hooks';
+import { getFirebaseAuthErrorMessage } from '@/utils/getFirebaseAuthErrorMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import type { FirebaseError } from 'firebase/app';
+import { AuthErrorCodes } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import * as z from 'zod';
 
 import { AuthService } from '@/services/auth';
@@ -43,10 +47,18 @@ const useSignUp = () => {
       }
 
       form.reset();
+      toast.success('Cadastro realizado com sucesso!');
       navigate('/');
     },
     onError: (error: unknown) => {
-      console.error('Registration failed: ', error);
+      const errorMessage = getFirebaseAuthErrorMessage(error);
+
+      if ((error as FirebaseError)?.code === AuthErrorCodes.EMAIL_EXISTS) {
+        form.setError('email', { message: errorMessage });
+        return;
+      }
+
+      toast.error(errorMessage);
     },
   });
 

@@ -2,10 +2,12 @@ import { MUTATION_KEYS } from '@/constants/mutationKeys';
 import { auth } from '@/lib/firebase';
 import { login } from '@/store/auth/slice';
 import { useAppDispatch } from '@/store/hooks';
+import { getFirebaseAuthErrorMessage } from '@/utils/getFirebaseAuthErrorMessage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import * as z from 'zod';
 
 import { AuthService } from '@/services/auth';
@@ -41,10 +43,12 @@ const useSignIn = () => {
       }
 
       form.reset();
+      toast.success('Login realizado com sucesso!');
       navigate('/');
     },
     onError: (error: unknown) => {
-      console.error('Login failed: ', error);
+      const errorMessage = getFirebaseAuthErrorMessage(error);
+      toast.error(errorMessage);
     },
   });
 

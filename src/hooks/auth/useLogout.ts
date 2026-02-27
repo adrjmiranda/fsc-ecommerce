@@ -3,6 +3,7 @@ import { logout } from '@/store/auth/slice';
 import { useAppDispatch } from '@/store/hooks';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 import { AuthService } from '@/services/auth';
 
@@ -16,10 +17,12 @@ export const useLogout = () => {
     onSuccess: () => {
       dispatch(logout());
 
+      toast.success('Logout realizado com sucesso!');
       navigate('/autenticacao/login');
     },
-    onError: (error: unknown) => {
-      console.error('Logout failed: ', error);
+    onError: () => {
+      dispatch(logout());
+      navigate('/autenticacao/login');
     },
   });
 
