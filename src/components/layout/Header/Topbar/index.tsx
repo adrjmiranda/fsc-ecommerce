@@ -2,7 +2,14 @@ import { selectCurrentUser } from '@/store/auth/selectors';
 import { selectCartQuantity } from '@/store/cart/selectors';
 import { openCart } from '@/store/cart/slice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { Circle, Heart, SearchIcon, ShoppingCart, User2 } from 'lucide-react';
+import {
+  Circle,
+  Heart,
+  LogOutIcon,
+  SearchIcon,
+  ShoppingCart,
+  User2,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import Button from '@/components/ui/Button';
@@ -44,9 +51,14 @@ const Topbar = () => {
             className={`${quantity > 0 ? 'pr-6' : ''} 7xl:pr-0 order-3 flex flex-1/5 grow-0 items-center justify-end gap-4 sm:order-3`}
           >
             {currentUser ? (
-              <Button type="button" onClick={onSubmit}>
+              <button
+                className="hover:text-primary flex items-center justify-center gap-1 rounded-md px-2 py-1 text-center text-base font-medium ring-1 ring-gray-200 transition-colors duration-200 ease-in"
+                type="button"
+                onClick={onSubmit}
+              >
+                <LogOutIcon size={16} />
                 Sair
-              </Button>
+              </button>
             ) : (
               <Link to="/autenticacao/login">
                 <Button type="button">
