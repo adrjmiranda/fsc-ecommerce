@@ -1,3 +1,5 @@
-const CATEGORIES = '@categories:all';
+const QUERY_KEYS = {
+  CATEGORIES: '@categories:all',
+};
 
-export { CATEGORIES };
+export { QUERY_KEYS };

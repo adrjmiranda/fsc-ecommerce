@@ -19,6 +19,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import AuthGuard from './components/guards/AuthGuard';
+import GuestGuard from './components/guards/GuestGuard';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -42,13 +45,19 @@ createRoot(document.getElementById('root')!).render(
                   <Route path="categorias" element={<Categories />} />
                   <Route path="sobre" element={<About />} />
                   <Route path="contato" element={<Contact />} />
-                  <Route path="carrinho" element={<Cart />} />
+                  <Route path="" element={<AuthGuard />}>
+                    <Route path="carrinho" element={<Cart />} />
+                  </Route>
                 </Route>
-                <Route path="autenticacao" element={<AuthLayout />}>
-                  <Route path="login" element={<SignIn />} />
-                  <Route path="cadastro" element={<SignUp />} />
+
+                <Route path="" element={<GuestGuard />}>
+                  <Route path="autenticacao" element={<AuthLayout />}>
+                    <Route path="login" element={<SignIn />} />
+                    <Route path="cadastro" element={<SignUp />} />
+                  </Route>
                 </Route>
               </Route>
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
