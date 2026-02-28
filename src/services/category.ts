@@ -1,6 +1,13 @@
 import type { Category } from '@/@types/categoy';
 import { db } from '@/lib/firebase';
-import { QueryDocumentSnapshot, collection, getDocs } from 'firebase/firestore';
+import {
+  QueryDocumentSnapshot,
+  collection,
+  getDocs,
+  limit,
+  query,
+  where,
+} from 'firebase/firestore';
 
 const categoryConverter = {
   toFirestore: (category: Category) => category,
@@ -24,6 +31,20 @@ const CategoryService = {
     );
 
     return querySnapshot.docs.map((doc) => doc.data());
+  },
+
+  async fetchByName(name: string): Promise<Category | null> {
+    const categoriesRef = collection(db, 'categories').withConverter(
+      categoryConverter,
+    );
+    const q = query(categoriesRef, where('name', '==', name), limit(1));
+
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+      return null;
+    }
+
+    return querySnapshot.docs[0].data();
   },
 };
 

@@ -8,6 +8,7 @@ import SignUp from '@/pages/Auth/SignUp';
 import About from '@/pages/Common/About';
 import Cart from '@/pages/Common/Cart';
 import Categories from '@/pages/Common/Categories';
+import Category from '@/pages/Common/Category';
 import Contact from '@/pages/Common/Contact';
 import Home from '@/pages/Common/Home/index.tsx';
 import CommonLayout from '@/pages/Common/Layout.tsx';
@@ -19,8 +20,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import AuthGuard from './components/guards/AuthGuard';
-import GuestGuard from './components/guards/GuestGuard';
+import AuthGuard from '@/components/guards/AuthGuard';
+import GuestGuard from '@/components/guards/GuestGuard';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ createRoot(document.getElementById('root')!).render(
                   <Route path="categorias" element={<Categories />} />
                   <Route path="sobre" element={<About />} />
                   <Route path="contato" element={<Contact />} />
+                  <Route path="categoria/:name" element={<Category />} />
                   <Route path="" element={<AuthGuard />}>
                     <Route path="carrinho" element={<Cart />} />
                   </Route>
