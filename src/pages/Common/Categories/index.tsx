@@ -39,7 +39,7 @@ const Categories = () => {
                   </p>
 
                   <Link
-                    to={`/categorias/${category.name}`}
+                    to={`/categoria/${category.name}`}
                     className="absolute inset-0 z-30 flex h-full w-full items-end justify-center py-6 transition-all duration-300 ease-in-out group-hover:flex sm:hidden sm:items-center sm:py-0"
                     title={category.displayName}
                     children={
