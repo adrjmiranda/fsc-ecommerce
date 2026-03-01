@@ -5,6 +5,7 @@ import SectionTitle from '@/components/ui/SectionTitle';
 import { useCategory } from '@/hooks/categories/useCategory';
 
 import CategorySkeleton from './CategorySkeleton';
+import ProductCard from './ProductCard';
 
 const Category = () => {
   const { name } = useParams();
@@ -32,18 +33,9 @@ const Category = () => {
           {/* Products */}
           {category.products.length > 0 && (
             <div className="py-20">
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid gap-10 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-4">
                 {category.products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="h-96 w-full overflow-hidden rounded-sm"
-                  >
-                    <img
-                      src={product.imageUrl}
-                      alt={product.displayName}
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             </div>
