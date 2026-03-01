@@ -23,6 +23,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import AuthGuard from '@/components/guards/AuthGuard';
 import GuestGuard from '@/components/guards/GuestGuard';
 
+import PaymentConfirmation from './pages/Common/PaymentConfirmation';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -49,6 +51,10 @@ createRoot(document.getElementById('root')!).render(
                   <Route path="categoria/:name" element={<Category />} />
                   <Route path="" element={<AuthGuard />}>
                     <Route path="carrinho" element={<Cart />} />
+                    <Route
+                      path="payment-confirmation"
+                      element={<PaymentConfirmation />}
+                    />
                   </Route>
                 </Route>
 

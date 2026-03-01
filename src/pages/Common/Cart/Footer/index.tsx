@@ -1,11 +1,18 @@
-import { selectCartTotalFormatted } from '@/store/cart/selectors';
+import {
+  selectCartItems,
+  selectCartTotalFormatted,
+} from '@/store/cart/selectors';
 import { useAppSelector } from '@/store/hooks';
-import { ShoppingBag } from 'lucide-react';
+import { Loader2, ShoppingBag } from 'lucide-react';
 
 import Button from '@/components/ui/Button';
 
+import { useCheckout } from '@/hooks/checkout/useCheckout';
+
 const Footer = () => {
   const total = useAppSelector(selectCartTotalFormatted);
+  const items = useAppSelector(selectCartItems);
+  const { handleCheckout, isPending } = useCheckout({ items });
 
   return (
     <tfoot className="text-primary-text w-full rounded-sm p-2 ring-1 ring-gray-100">
@@ -17,11 +24,22 @@ const Footer = () => {
         <th className="text-sm font-medium sm:text-base">{total}</th>
         <th className="text-sm font-medium sm:text-base">
           <Button
+            disabled={isPending}
+            onClick={handleCheckout}
             variant="primary"
             className="w-full text-xs min-[480px]:text-sm"
           >
-            <ShoppingBag size={20} className="hidden lg:block" />
-            Continuar
+            {isPending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Processando...
+              </>
+            ) : (
+              <>
+                <ShoppingBag size={20} className="hidden lg:block" />
+                Continuar
+              </>
+            )}
           </Button>
         </th>
       </tr>
