@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "seed": "tsx seeders/index.ts"
+    "seed": "tsx seeders/index.ts",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
